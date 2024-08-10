@@ -43,9 +43,10 @@ cd twitch-bot
    - On macOS/Linux use: `source venv/bin/activate`
 
 3. **Install the required dependencies:**
-   - `pip install -r requirements.txt`
-
-4. **Create a `.env` file:**
+```py
+pip install -r requirements.txt
+```
+5. **Create a `.env` file:**
    In the root directory of the project, create a `.env` file with the following content:
 ```.env
 TWITCH_OAUTH_TOKEN=oauth:your_oauth_token_here
