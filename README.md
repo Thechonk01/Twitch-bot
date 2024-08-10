@@ -32,8 +32,10 @@ This is a Twitch bot built using Python and the TwitchIO library. The bot provid
 ## Installation
 
 1. **Clone the repository:**
-   - `git clone https://github.com/your-username/twitch-bot.git`
-   - `cd twitch-bot`
+```bash
+git clone https://github.com/your-username/twitch-bot.git
+cd twitch-bot
+```
 
 2. **Create and activate a virtual environment (optional but recommended):**
    - `python -m venv venv`
@@ -45,17 +47,19 @@ This is a Twitch bot built using Python and the TwitchIO library. The bot provid
 
 4. **Create a `.env` file:**
    In the root directory of the project, create a `.env` file with the following content:
-   - `TWITCH_OAUTH_TOKEN=oauth:your_oauth_token_here`
-   - `TWITCH_CLIENT_ID=your_client_id_here`
-   - `TWITCH_CLIENT_SECRET=your_client_secret_here`
-   - `TWITCH_USERNAME=your_bot_username_here`
-   - `TWITCH_CHANNEL=your_channel_name_here`
-
+```.env
+TWITCH_OAUTH_TOKEN=oauth:your_oauth_token_here
+TWITCH_CLIENT_ID=your_client_id_here
+TWITCH_CLIENT_SECRET=your_client_secret_here
+TWITCH_USERNAME=your_bot_username_here
+TWITCH_CHANNEL=your_channel_name_here
+```
    Replace `your_oauth_token_here`, `your_client_id_here`, `your_client_secret_here`, `your_bot_username_here`, and `your_channel_name_here` with your actual Twitch credentials.
 
 5. **Run the bot:**
-   - `python bot.py`
-
+```py
+python bot.py
+```
 ## Usage
 
 - Once the bot is running, it will join the specified Twitch channel and start listening for commands.
@@ -85,17 +89,17 @@ def prepare(bot):
     bot.add_cog(MyCommands(bot))
 ```
 
-##Contributing
+## Contributing
 
 If you'd like to contribute to this project, feel free to fork the repository and submit a pull request. Contributions are welcome!
 
-##License
+## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-##Acknowledgments
+## Acknowledgments
 
 - TwitchIO: The Python library used to build this bot.
 - Twitch Developers: For providing the APIs and documentation.
 
-###Happy Streaming!
+### Happy Streaming!
