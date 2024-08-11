@@ -24,7 +24,7 @@ class Bot(commands.Bot):
         self.load_module('commands.lurk')        # Assuming lurk and unlurk commands are here
         self.load_module('commands.info')        # Assuming info command is here
         self.load_module('commands.commands')# Assuming the commands command is here
-        self.load_module('commands.viewtime')    # Assuming the viewtime command is here
+        self.load_module('commands.watchtime')    # Assuming the viewtime command is here
         self.load_module('commands.followage')  # Assuming the followage command is here
         self.load_module('commands.subcount')    # Assuming the subcount command is here
 

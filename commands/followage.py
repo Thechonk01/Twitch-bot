@@ -1,6 +1,7 @@
 from twitchio.ext import commands
 import requests
 import os
+from datetime import datetime, timezone
 
 class Followage(commands.Cog):
 
@@ -33,17 +34,23 @@ class Followage(commands.Cog):
             await ctx.send(f"User {username} not found.")
             return
 
-        url = f"https://api.twitch.tv/helix/users/follows?to_id={self.broadcaster_id}&from_id={user_id}"
+        url = f"https://api.twitch.tv/helix/channels/followers?broadcaster_id={self.broadcaster_id}&user_id={user_id}"
         response = requests.get(url, headers=self.get_headers())
-        data = response.json().get('data', [])
 
-        if not data:
-            await ctx.send(f"{username} is not following the channel.")
-            return
-
-        follow_data = data[0]
-        follow_date = follow_data['followed_at']
-        await ctx.send(f"{username} has been following since {follow_date}.")
+        if response.status_code == 200:
+            data = response.json().get('data', [])
+            if not data:
+                await ctx.send(f"{username} is not following the channel.")
+            else:
+                follow_date = datetime.strptime(data[0]['followed_at'], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+                now = datetime.now(timezone.utc)
+                difference = now - follow_date
+                days = difference.days
+                hours, remainder = divmod(difference.seconds, 3600)
+                minutes, _ = divmod(remainder, 60)
+                await ctx.send(f"{username} has been following for {days} days, {hours} hours, and {minutes} minutes.")
+        else:
+            await ctx.send(f"Failed to retrieve followage data: {response.status_code} - {response.json().get('message', '')}")
 
 def prepare(bot):
     bot.add_cog(Followage(bot))
